@@ -1,0 +1,174 @@
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space /
+    background: transparent; / optional: just make scrollbar invisible /
+    }
+    / optional: show position indicator in red */
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*  */
+.slanted {
+  font-size: 0px;
+  line-height: 0%;
+  width: 100px;
+  border-top: 20px solid #fa4a5f;
+  border-right: 20px solid #ededed;
+}
+.text_stroke {
+  color: #fa4a5f;
+  font-size: 48px;
+  -webkit-text-stroke: 1px #fa4a5f;
+  -webkit-text-fill-color: transparent;
+}
+@media only screen and (max-width: 1300px) {
+  .banner_image {
+    width: 100%;
+  }
+}
+/* flip card in core value */
+.card {
+  cursor: pointer;
+  width: 236px;
+  height: 200px;
+}
+.front,
+.back {
+  width: 236px;
+  height: 200px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  transition: transform 0.5s linear;
+}
+/* .card:hover > .front {
+  transform: perspective(600px) rotateY(-180deg);
+}
+.card:hover > .back {
+  transform: perspective(600px) rotateY(0deg);
+} */
+.back {
+  transform: rotateY(180deg);
+}
+
+@media only screen and (max-width: 1200px) {
+  .card {
+    width: 150px;
+    min-height: 110px;
+    height: auto;
+  }
+  .card img {
+    width: 50%;
+  }
+  .front,
+  .back {
+    width: 150px;
+    min-height: 110px;
+    height: auto;
+  }
+  /*Big smartphones [426px -> 600px]*/
+}
+/*  */
+.triangle {
+  width: 0;
+  height: 0;
+  border-width: 11px 0 10px 10px;
+  border-color: transparent transparent transparent #37b57e;
+  border-style: solid;
+}
+.triangle1 {
+  width: 0;
+  height: 0;
+  border-width: 11px 0 10px 10px;
+  border-color: transparent transparent transparent #f94a5f;
+  border-style: solid;
+}
+
+.triangle2 {
+  width: 0;
+  height: 0;
+  border-width: 11px 0 10px 10px;
+  border-color: transparent transparent transparent #227aeb;
+  border-style: solid;
+}
+/*  */
+.thinkable_triangle {
+  width: 0;
+  height: 0;
+  border-width: 38px 0 0 14px;
+  border-color: transparent transparent transparent #f94a5f;
+  border-style: solid;
+}
+.speakable_triangle {
+  width: 0;
+  height: 0;
+  border-width: 38px 0 0 14px;
+  border-color: transparent transparent transparent #37b57e;
+  border-style: solid;
+}
+.workable_triangle {
+  width: 0;
+  height: 0;
+  border-width: 38px 0 0 14px;
+  border-color: transparent transparent transparent #227aeb;
+  border-style: solid;
+}
+/*  */
+/* .list0:hover {
+  color: red;
+} */
+.team_img {
+  width: 277px;
+  height: 299px;
+}
+/*  */
+.container {
+  width: 90%;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+}
+/*  */
+@media only screen and (max-width: 600px) {
+  .contact_social {
+    width: 25%;
+  }
+}
