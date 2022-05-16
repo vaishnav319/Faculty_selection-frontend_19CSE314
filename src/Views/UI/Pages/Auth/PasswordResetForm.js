@@ -11,15 +11,14 @@ import {
 import { useFormik } from "formik";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { verifyForgotOTP } from "../../../../Application/Actions/auth.actions";
+import { updatePassword } from "../../../../Application/Actions/auth.actions";
 
 import * as Yup from "yup";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import PasswordResetForm from "./PasswordResetForm";
 
 const PasswordVerifyForm = ({
-  verifyForgotOTP,
+  updatePassword,
   auth: {
     isError,
     isLoading,
@@ -32,19 +31,18 @@ const PasswordVerifyForm = ({
 }) => {
   const formik = useFormik({
     initialValues: {
-      userOtp: "",
+      userEmail: "",
+      password: "",
     },
     validationSchema: Yup.object({
-      userOtp: Yup.string()
-        .max(4, "Please enter a valid number")
-        .min(4, "Please enter a valid number")
-        .required("Required"),
+      userEmail: Yup.string().required("Required"),
+      password: Yup.string().required("Required"),
     }),
 
     onSubmit: (values, { resetForm }) => {
       console.log(values);
 
-      verifyForgotOTP(values);
+      updatePassword(values);
     },
   });
 
@@ -74,32 +72,40 @@ const PasswordVerifyForm = ({
           <form onSubmit={formik.handleSubmit}>
             <TextField
               id=""
-              placeholder="Enter OTP here received in mail.."
+              placeholder="Enter your mail.."
               sx={{
                 width: { md: "48%", xs: "100%" },
                 background: "#fff",
                 borderRadius: "5px",
               }}
-              name="userOtp"
+              name="userEmail"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.userOtp}
-              error={formik.touched.userOtp && Boolean(formik.errors.userOtp)}
-              helperText={formik.touched.userOtp && formik.errors.userOtp}
+              value={formik.values.userEmail}
+              error={
+                formik.touched.userEmail && Boolean(formik.errors.userEmail)
+              }
+              helperText={formik.touched.userEmail && formik.errors.userEmail}
             />
-            <br />
 
-            {otpverifyfail && (
-              <Alert severity="error" sx={{ mt: "10px" }}>
-                Please enter valid OTP..
-              </Alert>
-            )}
-            {otpverifysuccess && (
-              <Alert severity="success" sx={{ mt: "10px" }}>
-                Hurray! Your Number is verified now
-              </Alert>
-            )}
+            <br />
+            <TextField
+              id=""
+              placeholder="Enter new Password here.."
+              sx={{
+                width: { md: "48%", xs: "100%" },
+                background: "#fff",
+                borderRadius: "5px",
+              }}
+              name="password"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+            />
 
             <br />
             <Button
@@ -113,22 +119,19 @@ const PasswordVerifyForm = ({
                 "&:hover": { background: "#fff", color: "black" },
               }}
             >
-              Verify
+              Submit
             </Button>
           </form>
-          {otpverifysuccess && <PasswordResetForm />}
         </Box>
       </Container>
     </>
   );
 };
 PasswordVerifyForm.propTypes = {
-  verifyForgotOTP: PropTypes.func.isRequired,
+  updatePassword: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { verifyForgotOTP })(
-  PasswordVerifyForm
-);
+export default connect(mapStateToProps, { updatePassword })(PasswordVerifyForm);

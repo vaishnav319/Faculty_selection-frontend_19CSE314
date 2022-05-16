@@ -30,47 +30,184 @@ const HrDashboard = ({
     return <Navigate replace to="/profile/me" />;
   }
   //   console.log(userApplications);
-
+  const time = new Date();
+  const hours = time.getHours();
+  console.log(typeof hours);
+  // const onGoing = userApplications.filter((x) => x.status == "onGoing");
+  // console.log(onGoing.length);
+  // const selected = userApplications.filter((x) => x.status == "selected");
   return (
-    <div>
+    <Box>
       {userDetailsInfo && (
-        <div style={{ margin: "200px 0", textAlign: "center" }}>
-          <h1 style={{ color: "yellow" }}>HrDashboard</h1>
-          <h1>Hii {userDetailsInfo ? userDetailsInfo.userName : ""}</h1>
-          <h1>You are a {userInfo.role}</h1>
-          {/* <Grid
-            container
-            spacing={2}
+        <Box
+          className="container"
+          sx={{ margin: { md: "100px auto", xs: "150px auto" } }}
+        >
+          <Typography
+            textAlign="center"
             sx={{
-              justifyContent: "space-around",
-              padding: "20px ",
-              alignItems: "flex-end",
+              fontWeight: "bold",
+              fontSize: { md: "58px", xs: "31px" },
+              lineHeight: { md: "70px", xs: "48px" },
+              color: "#1B1B1B",
+              my: "30px",
             }}
           >
-            <Grid item lg={3} md={6} xs={12}>
-              HEy
-              <br />
-            </Grid>
-            <Grid item lg={2} md={6} xs={12}>
-              hey
-            </Grid>
-            <Grid item lg={2} md={6} xs={12}>
-              hey
-            </Grid>
-            <Grid item lg={2} md={6} xs={12}>
-              <Typography
-                variant="h3"
-                sx={{ fontSize: "20px", fontWeight: "500" }}
-              >
-                You can reach us in
+            Welcome To{" "}
+            <span style={{ color: "#FFD233", fontWeight: "bold" }}>
+              {" "}
+              Job Crack
+            </span>
+          </Typography>
+          {/* <p>Your Role: {userInfo.role === "user" ? "Applicant" : ""}</p> */}
+          <Box display="flex" justifyContent="left" gap="20px" flexWrap="wrap">
+            <Box sx={{ margin: { md: "100px auto", xs: "150px auto" } }}>
+              <Typography sx={{ fontSize: "2.5rem" }}>
+                {hours < 12 && "Good Morning "}
+                {hours >= 12 && hours < 16 ? "Good Afternoon " : ""}
+                {hours > 16 && "Good Evening "}
+                {userDetailsInfo ? userDetailsInfo.userName : ""},
               </Typography>
-              Hii
-              <Box sx={{ marginTop: { md: "20px", xs: "0" } }} />
-            </Grid>
-          </Grid> */}
-        </div>
+              <Typography sx={{ fontSize: "1rem" }}>
+                This is your dashboard here you can check your activity here....
+              </Typography>
+            </Box>
+            {/* <Card sx={{ background: "#FFD233", maxWidth: 300, mt: "10px" }}>
+              <CardContent>
+                <ReactSpeedometer
+                  value={userApplications.length}
+                  maxValue={userApplications.length > 10 ? 100 : 5}
+                  segments={5}
+                  height={200}
+                  width={275}
+                  needleTransitionDuration={3000}
+                  segmentColors={[
+                    "#F32424",
+                    "#F55353",
+                    "#90EE90",
+                    "green",
+                    "#006400",
+                  ]}
+                  // startColor will be ignored
+                  // endColor will be ignored
+                />
+                <Typography sx={{ color: "black" }}>
+                  You have applied to {userApplications.length}{" "}
+                  {userApplications.length > 1 ? "applications" : "application"}
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card
+              sx={{
+                background: "#FFD233",
+                maxWidth: 300,
+                mt: "10px",
+                ml: "40px",
+              }}
+            >
+              <CardContent>
+                <ReactSpeedometer
+                  value={onGoing.length}
+                  maxValue={userApplications.length > 10 ? 100 : 5}
+                  segments={5}
+                  height={200}
+                  width={275}
+                  needleTransitionDuration={3000}
+                  segmentColors={[
+                    "#F32424",
+                    "#F55353",
+                    "#90EE90",
+                    "green",
+                    "#006400",
+                  ]}
+                  // startColor will be ignored
+                  // endColor will be ignored
+                />
+                <Typography sx={{ color: "black" }}>
+                  Your {onGoing.length}{" "}
+                  {onGoing.length > 1 ? "applications" : "application"} is
+                  process
+                </Typography>
+              </CardContent>
+            </Card> */}
+            {/* <Card sx={{ background: "#FFD233", maxWidth: 300, mt: "10px" }}>
+              <CardContent>
+                <ReactSpeedometer
+                  value={selected.length}
+                  maxValue={selected.length > 10 ? 100 : 5}
+                  segments={5}
+                  height={200}
+                  width={275}
+                  needleTransitionDuration={3000}
+                  segmentColors={[
+                    "#F32424",
+                    "#F55353",
+                    "#90EE90",
+                    "green",
+                    "#006400",
+                  ]}
+                  // startColor will be ignored
+                  // endColor will be ignored
+                />
+                <Typography sx={{ color: "black" }}>
+                  You have been selected to {selected.length}{" "}
+                  {selected.length > 1 ? "applications" : "application"}
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card sx={{ background: "#001531", maxWidth: 300, mt: "10px" }}>
+              <CardContent>
+                <ReactSpeedometer
+                  value={notSelected}
+                  maxValue={notSelected.length > 10 ? 100 : 5}
+                  segments={5}
+                  height={200}
+                  width={275}
+                  needleTransitionDuration={3000}
+                  segmentColors={[
+                    "#F32424",
+                    "#F55353",
+                    "#90EE90",
+                    "green",
+                    "#006400",
+                  ]}
+                  // startColor will be ignored
+                  // endColor will be ignored
+                />
+                <Typography sx={{ color: "white" }}>
+                  Rejected Applications
+                </Typography>
+              </CardContent>
+            </Card> */}
+          </Box>
+          {/* <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "10px",
+              flexWrap: "wrap",
+            }}
+          >
+            <Typography
+              textAlign="center"
+              sx={{
+                fontWeight: "bold",
+                fontSize: { md: "48px", xs: "31px" },
+                lineHeight: { md: "70px", xs: "48px" },
+                color: "#1B1B1B",
+              }}
+            >
+              Jobs in JobCrack is
+            </Typography>
+            <Box sx={{ width: "300px" }}>
+              {" "}
+              <TextTickers />
+            </Box>
+          </Box> */}
+          {/* <Aboutus /> */}
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 

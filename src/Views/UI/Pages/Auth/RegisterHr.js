@@ -28,6 +28,7 @@ const RegisterForm = ({
       userName: "",
       email: "",
       password: "",
+      phoneNumber: "",
       confirmPassword: "",
       qualification: "",
       file: "",
@@ -190,6 +191,27 @@ const RegisterForm = ({
               }
               helperText={
                 formik.touched.confirmPassword && formik.errors.confirmPassword
+              }
+            />
+            <br />
+            <br />
+            <TextField
+              type="text"
+              label="Enter your phoneNumber"
+              sx={{
+                width: "100%",
+                background: " rgba(27, 27, 27, 0.05)",
+                borderRadius: "5px",
+              }}
+              name="phoneNumber"
+              onChange={formik.handleChange}
+              value={formik.values.phoneNumber}
+              onBlur={formik.handleBlur}
+              error={
+                formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)
+              }
+              helperText={
+                formik.touched.phoneNumber && formik.errors.phoneNumber
               }
             />
             <br />

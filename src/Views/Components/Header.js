@@ -185,10 +185,6 @@ const adminLinks = [
     link: "/hr/profile/me",
     title: "Profile Page",
   },
-  {
-    link: "/notifications",
-    title: "Notifications",
-  },
 ];
 
 const Header = ({ logout, auth: { isAuthenticated, userInfo }, profile }) => {
